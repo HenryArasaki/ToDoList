@@ -1,3 +1,75 @@
+:root{
+    --amarelo:#fcf4e8;
+    --verde:#76ee9a;
+    --azul:#5fd4d0;
+    --rosa:#fc7f94;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
 .concluido{
     text-decoration: line-through;
+}
+
+.botaoDeleta{
+    height: 20px;
+    width: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url("/imagens/x.png");
+    background-repeat: no-repeat;
+    border: none;
+}
+
+.botaoDeleta:hover{
+    box-shadow: 1px 1px #2e2e2e;
+}
+
+.app{
+    background-color: var(--amarelo);
+    margin: auto auto;
+    border: 5px solid var(--verde) ;
+    padding: 10px;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.titulo{
+    color: var(--azul);
+    font-family: 'Roboto', sans-serif;
+    font-size: 50px;
+    text-align: center;
+}
+
+.tarefinha{
+    color: var(--azul);
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+}
+
+.botao{
+    border: none;
+    border-radius: 25%;
+    background-color: var(--verde);
+    font-size: 20px;
+    padding: 2px 10px;
+    font-family: 'Roboto', sans-serif;
+    color:rgb(240, 240, 240);
+    font-weight: bold;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.botao:hover{
+    background-color: #4fc572;
+    box-shadow: none;
+}
+
+@media only screen and (min-width: 900px){
+    .app{
+        width: 900px;
+    }
 }

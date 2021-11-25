@@ -11,11 +11,12 @@ const atualizarLista = () => {
     const listinha = document.querySelectorAll('li')
     listinha.forEach((element)=>{
         element.remove()
-        console.log('removido')
+        
     })
 
     for(i=0;i<localStorage.length;i++){
         tarefinha = document.createElement('li')
+        tarefinha.classList.add("tarefinha")
         tarefinha.innerText = localStorage.key(i)
         if (localStorage.getItem(localStorage.key(i)) == 'true'){
             tarefinha.classList.add('concluido')
@@ -24,6 +25,19 @@ const atualizarLista = () => {
 
         const checkBox = document.createElement('input')
         checkBox.setAttribute('type','checkbox')
+        checkBox.addEventListener("change",function(){
+            if (checkBox.checked){
+                localStorage.setItem(checkBox.parentElement.textContent,'true')
+                checkBox.parentElement.classList.toggle('concluido')
+            }
+            if (!checkBox.checked){
+                localStorage.setItem(checkBox.parentElement.textContent,'false')
+                checkBox.parentElement.classList.toggle('concluido')
+            }
+            
+            console.log(checkBox.parentElement.innerText)
+           console.log(checkBox.parentElement.innerText.replace(/deletar/g),'')
+        })
         tarefinha.append(checkBox)
         // const botaoConclui = document.createElement('button')
         // botaoConclui.innerText = "concluir"
@@ -44,7 +58,8 @@ const atualizarLista = () => {
         // // botaoConclui.addEventListener('click', concluirTarefa)
     
         const botaoDeleta = document.createElement('button')
-        botaoDeleta.innerText = "deletar"
+        botaoDeleta.innerText = ""
+        botaoDeleta.classList.add("botaoDeleta")
         tarefinha.append(botaoDeleta)
         const deletarTarefa = (event)=>{
             const botao = event.target
@@ -70,13 +85,15 @@ const criarTarefa = (evento) => {
         completado: false
     }
 
+    if(inputText!=''){
 
+        localStorage.setItem( inputText, (tarefa.completado))
+    
+        input.value = ''
+    
+        atualizarLista()
+    }
 
-    localStorage.setItem( inputText, (tarefa.completado))
-
-    input.value = ''
-
-    atualizarLista()
 }
 
 
